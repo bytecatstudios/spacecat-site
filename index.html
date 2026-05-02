@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Space Cat · Open Beta Release</title>
+<link rel="icon" href="Assets/Gameobjects/Estrella.png">
 <link href="https://fonts.googleapis.com/css2?family=Jersey+10&family=Jersey+25&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
   :root {
@@ -593,6 +594,94 @@
   ::-webkit-scrollbar { width:5px; }
   ::-webkit-scrollbar-track { background:var(--dark); }
   ::-webkit-scrollbar-thumb { background:var(--pixel-blue); border-radius:2px; }
+
+  /* ── HAMBURGER ── */
+  .nav-hamburger {
+    display: none; flex-direction: column; gap: 5px;
+    cursor: pointer; padding: 4px; background: none; border: none; z-index: 202;
+  }
+  .nav-hamburger span {
+    display: block; width: 24px; height: 2px;
+    background: rgba(255,255,255,0.85); border-radius: 2px;
+    transition: transform 0.3s, opacity 0.3s;
+  }
+  .nav-hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .nav-hamburger.open span:nth-child(2) { opacity: 0; }
+  .nav-hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    /* NAV */
+    nav { padding: 12px 18px; gap: 10px; }
+    .nav-links {
+      display: none; flex-direction: column; gap: 0;
+      position: fixed; inset: 0;
+      background: rgba(13,15,30,0.97);
+      backdrop-filter: blur(16px);
+      justify-content: center; align-items: center;
+      z-index: 200; padding: 80px 30px 30px;
+    }
+    .nav-links.open { display: flex; }
+    .nav-links li { width: 100%; text-align: center; }
+    .nav-links a {
+      display: block; padding: 14px 0;
+      font-size: 1rem; border-bottom: 1px solid rgba(137,147,255,0.1);
+    }
+    .nav-back { display: none; }
+    .nav-hamburger { display: flex; }
+
+    /* HERO */
+    .hero { padding-top: 70px; }
+    .hero-content { padding: 40px 20px 30px; }
+    .hero h1 { font-size: clamp(3rem, 14vw, 6rem); }
+    .countdown-wrap { gap: 6px; flex-wrap: wrap; justify-content: center; }
+    .cd-block { min-width: 58px; padding: 10px 10px; }
+    .cd-num { font-size: 2rem; }
+    .cd-sep { font-size: 2rem; padding-top: 8px; }
+    .btn-beta { font-size: 0.95rem; padding: 14px 24px; }
+
+    /* SECTIONS */
+    #que-es, #features, #trailer, #gameplay, #powerups, #galeria, #creditos { padding: 60px 20px; }
+    #testers .testers-bg { padding: 70px 20px; }
+
+    /* QUÉ ES */
+    .que-es-grid { grid-template-columns: 1fr; gap: 32px; }
+    .que-es-visual { order: -1; }
+
+    /* FEATURES */
+    .feat-grid { grid-template-columns: 1fr 1fr; gap: 14px; }
+
+    /* GAMEPLAY CAROUSEL */
+    .gc-slide { flex-direction: column; gap: 24px; padding: 24px 20px; }
+    .gc-slide-img { width: 100%; height: 180px; flex-shrink: unset; }
+
+    /* POWER-UPS */
+    .pu-grid.cols-3 { grid-template-columns: 1fr; }
+    .pu-card { flex-direction: row; }
+
+    /* GALERÍA */
+    .gal-slide { aspect-ratio: 4/3; }
+
+    /* CRÉDITOS */
+    .cred-logo { height: 140px; }
+
+    /* ALPHA TESTERS */
+    .testers-grid { grid-template-columns: 1fr 1fr; gap: 10px; }
+    .testers-title { font-size: clamp(1.6rem, 6vw, 2.5rem); }
+
+    /* FOOTER */
+    footer { flex-direction: column; gap: 10px; text-align: center; padding: 24px 20px; }
+  }
+
+  @media (max-width: 540px) {
+    .feat-grid { grid-template-columns: 1fr; }
+    .testers-grid { grid-template-columns: 1fr; }
+    .countdown-wrap { gap: 4px; }
+    .cd-block { min-width: 52px; }
+    .cd-sep { display: none; }
+    .plat-strip { flex-direction: column; align-items: flex-start; }
+    footer img { display: none; }
+  }
 </style>
 </head>
 <body>
@@ -606,16 +695,19 @@
     <div class="nav-divider"></div>
     <span class="nav-game-title">Space Cat</span>
   </div>
-  <ul class="nav-links">
-    <li><a href="#que-es">El Juego</a></li>
-    <li><a href="#features">Features</a></li>
-    <li><a href="#trailer">Trailer</a></li>
-    <li><a href="#gameplay">Gameplay</a></li>
-    <li><a href="#powerups">Elementos</a></li>
-    <li><a href="#galeria">Galería</a></li>
-    <li><a href="#testers">Alpha</a></li>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#que-es" onclick="closeNav()">El Juego</a></li>
+    <li><a href="#features" onclick="closeNav()">Features</a></li>
+    <li><a href="#trailer" onclick="closeNav()">Trailer</a></li>
+    <li><a href="#gameplay" onclick="closeNav()">Gameplay</a></li>
+    <li><a href="#powerups" onclick="closeNav()">Elementos</a></li>
+    <li><a href="#galeria" onclick="closeNav()">Galería</a></li>
+    <li><a href="#testers" onclick="closeNav()">Alpha</a></li>
   </ul>
   <a href="bytecat.lat" class="nav-back">← ByteCat Studios</a>
+  <button class="nav-hamburger" id="navHamburger" onclick="toggleNav()" aria-label="Menú">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
 
 <!-- ══════════════════════════════════════════
@@ -1160,6 +1252,17 @@ const obs = new IntersectionObserver((entries) => {
   });
 }, { threshold: 0.08 });
 reveals.forEach(r => obs.observe(r));
+
+function toggleNav() {
+  document.getElementById('navLinks').classList.toggle('open');
+  document.getElementById('navHamburger').classList.toggle('open');
+  document.body.style.overflow = document.getElementById('navLinks').classList.contains('open') ? 'hidden' : '';
+}
+function closeNav() {
+  document.getElementById('navLinks').classList.remove('open');
+  document.getElementById('navHamburger').classList.remove('open');
+  document.body.style.overflow = '';
+}
 </script>
 </body>
 </html>
