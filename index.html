@@ -1092,17 +1092,33 @@
 
 <script>
 /* ── COUNTDOWN ──────────────────────────────────────── */
-const LAUNCH_DATE = new Date('2026-05-10T12:00:00');
+// Fecha de lanzamiento en hora CDMX
+const LAUNCH_DATE = new Date("2026-05-02T13:00:00-06:00");
+
+let serverOffset = 0;
+
+// Obtener hora real desde internet (timezone CDMX)
+async function syncServerTime() {
+  try {
+    const res = await fetch(
+      "https://worldtimeapi.org/api/timezone/America/Mexico_City"
+    );
+    const data = await res.json();
+
+    const serverNow = new Date(data.datetime).getTime();
+    const localNow = Date.now();
+
+    serverOffset = serverNow - localNow;
+  } catch (err) {
+    console.warn("No se pudo sincronizar la hora oficial CDMX.");
+  }
+}
 
 function updateCountdown() {
-  const now  = new Date();
+  const now = new Date(Date.now() + serverOffset);
   const diff = LAUNCH_DATE - now;
 
   if (diff <= 0) {
-    document.getElementById('cd-days').textContent  = '00';
-    document.getElementById('cd-hours').textContent = '00';
-    document.getElementById('cd-mins').textContent  = '00';
-    document.getElementById('cd-secs').textContent  = '00';
     unlockBeta();
     return;
   }
@@ -1118,14 +1134,11 @@ function updateCountdown() {
   document.getElementById('cd-secs').textContent  = String(secs).padStart(2,'0');
 }
 
-function unlockBeta() {
-  const btn = document.getElementById('betaBtn');
-  btn.className = 'btn-beta unlocked';
-  btn.textContent = '🎮 Prueba la Beta ahora';
-  btn.onclick = () => window.open('#', '_blank'); /*Download link*/}
-
-updateCountdown();
-setInterval(updateCountdown, 1000);
+async function startCountdown() {
+  await syncServerTime();
+  updateCountdown();
+  setInterval(updateCountdown, 1000);
+}
 
 function loadVideo() {
   const container = document.getElementById('videoContainer');
