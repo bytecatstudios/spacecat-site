@@ -1091,11 +1091,37 @@
 </footer>
 
 <script>
-/* ── COUNTDOWN ──────────────────────────────────────── */
-const LAUNCH_DATE = new Date('2026-05-10T12:00:00');
+// ── COUNTDOWN ──────────────────────────────────────────
+const LAUNCH_DATE = new Date('2026-05-10T12:00:00-06:00');
+let serverOffset = 0;
+let countdownInterval = null;
+async function syncServerTime() {
+  try {
+    const res  = await fetch('https://worldtimeapi.org/api/timezone/America/Mexico_City');
+    const data = await res.json();
+
+    const serverNow = new Date(data.datetime);
+    const localNow  = new Date();
+    serverOffset = serverNow - localNow;
+
+    startCountdown();
+  } catch (e) {
+    console.warn('No se pudo sincronizar la hora. Usando reloj local.');
+    startCountdown();
+  }
+}
+
+function getRealNow() {
+  return new Date(Date.now() + serverOffset);
+}
+
+function startCountdown() {
+  updateCountdown();
+  countdownInterval = setInterval(updateCountdown, 1000);
+}
 
 function updateCountdown() {
-  const now  = new Date();
+  const now  = getRealNow();
   const diff = LAUNCH_DATE - now;
 
   if (diff <= 0) {
@@ -1103,6 +1129,7 @@ function updateCountdown() {
     document.getElementById('cd-hours').textContent = '00';
     document.getElementById('cd-mins').textContent  = '00';
     document.getElementById('cd-secs').textContent  = '00';
+    clearInterval(countdownInterval);
     unlockBeta();
     return;
   }
@@ -1122,11 +1149,13 @@ function unlockBeta() {
   const btn = document.getElementById('betaBtn');
   btn.className = 'btn-beta unlocked';
   btn.textContent = '🎮 Prueba la Beta ahora';
-  btn.onclick = () => window.open('#', '_blank'); // ← reemplaza '#' con la URL real de descarga
+  btn.onclick = () => window.open('#', '_blank');
 }
+syncServerTime();
 
 updateCountdown();
 setInterval(updateCountdown, 1000);
+  
 function loadVideo() {
   const container = document.getElementById('videoContainer');
   const ytId = container.getAttribute('data-yt');
