@@ -1093,7 +1093,7 @@
 <script>
 /* ── COUNTDOWN ──────────────────────────────────────── */
 // Fecha de lanzamiento en hora CDMX
-const LAUNCH_DATE = new Date("2026-05-02T13:00:00-06:00");
+const LAUNCH_DATE = new Date("2026-05-02T15:00:00-06:00");
 
 let serverOffset = 0;
 
@@ -1138,6 +1138,16 @@ async function startCountdown() {
   await syncServerTime();
   updateCountdown();
   setInterval(updateCountdown, 1000);
+}
+
+function unlockBeta() {
+  const btn = document.getElementById('betaBtn');
+  btn.className = 'btn-beta unlocked';
+  btn.textContent = '🎮 Prueba la Beta ahora';
+
+  btn.onclick = () => {
+    window.location.href = "index.html";
+  };
 }
 
 function loadVideo() {
