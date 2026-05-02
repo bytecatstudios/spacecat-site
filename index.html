@@ -32,7 +32,6 @@
     image-rendering: auto;
   }
 
-  /* ── NAV ── */
   nav {
     position: fixed; top:0; left:0; right:0; z-index:1000;
     display: flex; align-items:center; justify-content:space-between;
@@ -68,7 +67,6 @@
   }
   .nav-back:hover { color:var(--purple); }
 
-  /* ── HERO ── */
   .hero {
     min-height: 100vh;
     position: relative;
@@ -126,7 +124,6 @@
     text-transform:uppercase;
   }
 
-  /* COUNTDOWN */
   .countdown-label {
     font-family:'Jersey 25', monospace;
     font-size:1.1rem; letter-spacing:0.15em;
@@ -162,7 +159,6 @@
     letter-spacing:0.12em; margin-top:4px;
   }
 
-  /* BETA BUTTON (locked/unlocked) */
   .btn-beta-wrap { min-height:58px; display:flex; justify-content:center; }
   .btn-beta {
     display:inline-flex; align-items:center; gap:10px;
@@ -193,7 +189,6 @@
     50%{ box-shadow: 0 0 60px rgba(85,154,255,0.8), 0 0 20px rgba(137,147,255,0.6); }
   }
 
-  /* ── SECTIONS SHARED ── */
   .section-inner { max-width:1100px; margin:0 auto; }
   .sec-label {
     font-family:'Jersey 25', monospace;
@@ -209,7 +204,6 @@
   }
   .sec-title em { font-style:normal; color:var(--purple); }
 
-  /* ── QUÉ ES ── */
   #que-es {
     background: var(--white);
     padding: 100px 60px;
@@ -261,7 +255,6 @@
   }
   .plat-badge .plat-label { font-size:0.62rem; letter-spacing:0.1em; opacity:0.7; margin-left:4px; }
 
-  /* ── KEY FEATURES ── */
   #features {
     background:var(--dark);
     padding:100px 60px;
@@ -301,7 +294,6 @@
   }
   .feat-card p { font-size:0.8rem; color:rgba(174,218,255,0.6); line-height:1.65; font-weight:300; }
 
-  /* ── TRAILER ── */
   #trailer { background:var(--offwhite); padding:100px 60px; }
   .trailer-inner { max-width:900px; margin:0 auto; }
   .trailer-inner .sec-title { text-align:center; margin-bottom:36px; }
@@ -338,9 +330,7 @@
     margin-top:14px; text-align:center;
     font-size:0.75rem; color:rgba(31,42,68,0.4); font-style:italic;
   }
-  /* To use: set data-yt on .video-container, JS handles it */
 
-  /* ── GAMEPLAY LOOP ── */
   #gameplay { background:var(--dark); padding:100px 60px; }
   #gameplay .sec-title { color:var(--white); }
   .gameplay-carousel { margin-top:48px; position:relative; }
@@ -396,7 +386,6 @@
   }
   .gc-btn:hover { background:rgba(137,147,255,0.12); border-color:var(--purple); }
 
-  /* ── ELEMENTOS DESTACADOS (POWER-UPS) ── */
   #powerups { background:var(--white); padding:100px 60px; }
   .pu-intro { max-width:700px; margin-bottom:60px; }
   .pu-category { margin-bottom:52px; }
@@ -446,7 +435,6 @@
   .pu-type-tag.powerup { background:rgba(245,197,66,0.12); color:#c9920a; border:1px solid rgba(245,197,66,0.3); }
   .pu-type-tag.obstacle { background:rgba(255,90,90,0.1); color:#cc3333; border:1px solid rgba(255,90,90,0.2); }
 
-  /* ── GALERÍA ── */
   #galeria { background:var(--offwhite); padding:100px 60px; }
   .gallery-carousel { position:relative; margin-top:40px; }
   .gal-track-wrap { overflow:hidden; border-radius:10px; }
@@ -488,7 +476,6 @@
   }
   .gal-btn:hover { background:rgba(137,147,255,0.08); border-color:var(--purple); }
 
-  /* ── CRÉDITOS ── */
   #creditos {
     background:var(--dark); padding:100px 60px;
     position:relative; overflow:hidden;
@@ -527,7 +514,6 @@
   }
   .cred-divider { width:60px; height:2px; background:rgba(137,147,255,0.2); margin:0 auto 32px; }
 
-  /* ── ALPHA TESTERS ── */
   #testers {
     position:relative; overflow:hidden; padding:0;
   }
@@ -574,7 +560,6 @@
     filter:drop-shadow(0 0 10px rgba(85,154,255,0.5));
   }
 
-  /* ── FOOTER ── */
   footer {
     background:rgba(8,10,20,1); padding:36px 60px;
     display:flex; align-items:center; justify-content:space-between;
@@ -586,16 +571,13 @@
   }
   .footer-copy { font-size:0.72rem; color:rgba(255,255,255,0.2); }
 
-  /* ── REVEAL ── */
   .reveal { opacity:0; transform:translateY(28px); transition:opacity 0.65s ease, transform 0.65s ease; }
   .reveal.visible { opacity:1; transform:translateY(0); }
 
-  /* ── SCROLLBAR ── */
   ::-webkit-scrollbar { width:5px; }
   ::-webkit-scrollbar-track { background:var(--dark); }
   ::-webkit-scrollbar-thumb { background:var(--pixel-blue); border-radius:2px; }
 
-  /* ── HAMBURGER ── */
   .nav-hamburger {
     display: none; flex-direction: column; gap: 5px;
     cursor: pointer; padding: 4px; background: none; border: none;
@@ -610,12 +592,8 @@
   .nav-hamburger.open span:nth-child(2) { opacity: 0; }
   .nav-hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
-  /* ── RESPONSIVE ── */
   @media (max-width: 900px) {
-    /* NAV */
     nav { padding: 12px 18px; gap: 10px; z-index: 1000; }
-
-    /* Full-screen overlay menu */
     .nav-links {
       display: none;
       flex-direction: column;
@@ -648,7 +626,6 @@
     .nav-back { display: none; }
     .nav-hamburger { display: flex; }
 
-    /* HERO */
     .hero { padding-top: 70px; }
     .hero-content { padding: 40px 20px 30px; }
     .hero h1 { font-size: clamp(3rem, 14vw, 6rem); }
@@ -658,36 +635,26 @@
     .cd-sep { font-size: 2rem; padding-top: 8px; }
     .btn-beta { font-size: 0.95rem; padding: 14px 24px; }
 
-    /* SECTIONS */
     #que-es, #features, #trailer, #gameplay, #powerups, #galeria, #creditos { padding: 60px 20px; }
     #testers .testers-bg { padding: 70px 20px; }
 
-    /* QUÉ ES */
     .que-es-grid { grid-template-columns: 1fr; gap: 32px; }
     .que-es-visual { order: -1; }
 
-    /* FEATURES */
     .feat-grid { grid-template-columns: 1fr 1fr; gap: 14px; }
 
-    /* GAMEPLAY CAROUSEL */
     .gc-slide { flex-direction: column; gap: 24px; padding: 24px 20px; }
     .gc-slide-img { width: 100%; height: 180px; flex-shrink: unset; }
 
-    /* POWER-UPS */
     .pu-grid.cols-3 { grid-template-columns: 1fr; }
     .pu-card { flex-direction: row; }
 
-    /* GALERÍA */
     .gal-slide { aspect-ratio: 4/3; }
-
-    /* CRÉDITOS */
     .cred-logo { height: 140px; }
 
-    /* ALPHA TESTERS */
     .testers-grid { grid-template-columns: 1fr 1fr; gap: 10px; }
     .testers-title { font-size: clamp(1.6rem, 6vw, 2.5rem); }
 
-    /* FOOTER */
     footer { flex-direction: column; gap: 10px; text-align: center; padding: 24px 20px; }
   }
 
@@ -704,7 +671,6 @@
 </head>
 <body>
 
-<!-- NAV -->
 <nav>
   <div class="nav-logo-group">
     <a class="nav-logo-link" href="http://bytecat.lat" aria-label="Ir a ByteCat Studios">
@@ -728,9 +694,6 @@
   </button>
 </nav>
 
-<!-- ══════════════════════════════════════════
-     1. HERO + COUNTDOWN
-══════════════════════════════════════════ -->
 <section class="hero" id="hero">
   <div class="hero-bg"></div>
   <div class="hero-content">
@@ -755,9 +718,7 @@
   </div>
 </section>
 
-<!-- ══════════════════════════════════════════
-     2. QUÉ ES SPACE CAT
-══════════════════════════════════════════ -->
+
 <section id="que-es">
   <div class="section-inner">
     <div class="reveal">
@@ -795,9 +756,7 @@
   </div>
 </section>
 
-<!-- ══════════════════════════════════════════
-     3. KEY FEATURES
-══════════════════════════════════════════ -->
+
 <section id="features">
   <div class="section-inner features-inner">
     <div class="reveal">
@@ -839,9 +798,7 @@
   </div>
 </section>
 
-<!-- ══════════════════════════════════════════
-     4. TRÁILER
-══════════════════════════════════════════ -->
+
 <section id="trailer">
   <div class="trailer-inner">
     <div class="reveal">
@@ -849,7 +806,6 @@
       <h2 class="sec-title" style="text-align:center;">Tráiler <em>oficial</em></h2>
     </div>
     <div class="reveal" style="margin-top:36px;">
-      <!-- Para usar: reemplaza data-yt="TU_VIDEO_ID" con el ID real de YouTube -->
       <div class="video-container" id="videoContainer" data-yt="ByaAZIee8FI">
         <div class="video-placeholder" id="videoPlaceholder" onclick="loadVideo()">
           <div class="play-icon">▶</div>
@@ -860,9 +816,7 @@
   </div>
 </section>
 
-<!-- ══════════════════════════════════════════
-     5. GAMEPLAY LOOP
-══════════════════════════════════════════ -->
+
 <section id="gameplay">
   <div class="section-inner">
     <div class="reveal">
@@ -929,9 +883,7 @@
   </div>
 </section>
 
-<!-- ══════════════════════════════════════════
-     6. ELEMENTOS DESTACADOS
-══════════════════════════════════════════ -->
+
 <section id="powerups">
   <div class="section-inner">
     <div class="reveal">
@@ -939,7 +891,6 @@
       <h2 class="sec-title">Elementos <em>destacados</em></h2>
     </div>
 
-    <!-- POWER-UPS -->
     <div class="pu-category reveal">
       <div class="pu-cat-label">
         <h3>⚡ Power-Ups</h3>
@@ -973,7 +924,6 @@
       </div>
     </div>
 
-    <!-- OBJETOS DE IMPULSO -->
     <div class="pu-category reveal">
       <div class="pu-cat-label">
         <h3>🚀 Objetos de Impulso</h3>
@@ -1000,7 +950,7 @@
           <div class="pu-icon-box"><img src="Assets/Gameobjects/Nave.png" alt="Nave gatienigena"></div>
           <div class="pu-card-text">
             <span class="pu-type-tag boost">Impulso</span>
-            <h4>Nave gatienígena</h4>
+            <h4>Nave Gatienígena</h4>
             <p>El primer contacto con seres de otro planeta es con... ¿Gatos alienígenas?</p>
           </div>
         </div>
@@ -1015,7 +965,6 @@
       </div>
     </div>
 
-    <!-- OBSTÁCULOS -->
     <div class="pu-category reveal">
       <div class="pu-cat-label">
         <h3>☄️ Obstáculos</h3>
@@ -1036,9 +985,7 @@
   </div>
 </section>
 
-<!-- ══════════════════════════════════════════
-     7. GALERÍA DE ARTE
-══════════════════════════════════════════ -->
+
 <section id="galeria">
   <div class="section-inner">
     <div class="reveal">
@@ -1078,9 +1025,6 @@
   </div>
 </section>
 
-<!-- ══════════════════════════════════════════
-     8. CRÉDITOS
-══════════════════════════════════════════ -->
 <section id="creditos">
   <div class="cred-inner">
     <div class="reveal">
@@ -1097,7 +1041,6 @@
 
       <p class="cred-role">Diseño · Programación · Arte · Composición</p>
       <div class="cred-names">
-        <!-- Añade los nombres del equipo aquí -->
         <span class="cred-name">Josmar Fernández</span>
         <span class="cred-name">Grecia Aguilar</span>
         <span class="cred-name">Javier Torres</span>
@@ -1118,9 +1061,6 @@
   </div>
 </section>
 
-<!-- ══════════════════════════════════════════
-     9. ALPHA TESTERS
-══════════════════════════════════════════ -->
 <section id="testers">
   <div class="testers-bg">
     <div class="testers-inner">
@@ -1144,7 +1084,6 @@
   </div>
 </section>
 
-<!-- FOOTER -->
 <footer>
   <span class="footer-game">Space Cat · Open Beta · ByteCat Studios</span>
   <img src="Assets/Imagotipo/ByteCat_HOR.png" alt="ByteCat Studios" style="height:32px;opacity:0.5;object-fit:contain;image-rendering:auto;">
@@ -1153,7 +1092,6 @@
 
 <script>
 /* ── COUNTDOWN ──────────────────────────────────────── */
-// ✏️ CAMBIA ESTA FECHA para establecer el lanzamiento de la beta
 const LAUNCH_DATE = new Date('2026-05-10T12:00:00');
 
 function updateCountdown() {
@@ -1184,13 +1122,11 @@ function unlockBeta() {
   const btn = document.getElementById('betaBtn');
   btn.className = 'btn-beta unlocked';
   btn.textContent = '🎮 Prueba la Beta ahora';
-  btn.onclick = () => window.open('#', '_blank'); // ← reemplaza '#' con la URL real de descarga
-}
+  btn.onclick = () => window.open('#', '_blank'); /*Download link*/}
 
 updateCountdown();
 setInterval(updateCountdown, 1000);
 
-/* ── VIDEO ──────────────────────────────────────────── */
 function loadVideo() {
   const container = document.getElementById('videoContainer');
   const ytId = container.getAttribute('data-yt');
@@ -1215,7 +1151,6 @@ function loadVideo() {
   container.appendChild(iframe);
 }
 
-/* ── GAMEPLAY CAROUSEL ──────────────────────────────── */
 let gcIdx = 0;
 const gcSlides = document.querySelectorAll('#gcTrack .gc-slide');
 const gcDotsEl = document.getElementById('gcDots');
@@ -1237,7 +1172,6 @@ function gcNext() { gcGo(gcIdx+1); }
 function gcPrev() { gcGo(gcIdx-1); }
 gcAuto = setInterval(() => gcGo(gcIdx+1), 5000);
 
-/* ── GALLERY CAROUSEL ───────────────────────────────── */
 let galIdx = 0;
 const galSlides = document.querySelectorAll('#galTrack .gal-slide');
 const galDotsEl = document.getElementById('galDots');
@@ -1259,7 +1193,6 @@ function galNext() { galGo(galIdx+1); }
 function galPrev() { galGo(galIdx-1); }
 galAuto = setInterval(() => galGo(galIdx+1), 4000);
 
-/* ── REVEAL ON SCROLL ───────────────────────────────── */
 const reveals = document.querySelectorAll('.reveal');
 const obs = new IntersectionObserver((entries) => {
   entries.forEach((e, i) => {
